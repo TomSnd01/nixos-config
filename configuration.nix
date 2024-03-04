@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./rclone-gdrive.nix
     ];
 
   # Bootloader.
@@ -63,7 +64,13 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.enable = true;  
+  services.xserver.displayManager = {
+    autoLogin = {
+      enable = true;
+      user = "tosa";
+    };
+  };
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
@@ -93,7 +100,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tosa = {
@@ -104,74 +111,45 @@
     ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "tosa";
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # List allowed insecure packages
   nixpkgs.config.permittedInsecurePackages = [
   	"electron-25.9.0"
   ];
 
-  # List packages installed in system profile. To search, run:
+  # List stable packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = 
   	(with pkgs; [
-    		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    		git
+        wget
+    		vim
     		neovim
+    		git
     		google-chrome
-		obsidian
-		discord
-		rustup
-		alacritty
-		neofetch
-		rclone
-		openrazer-daemon
-		polychromatic
-		spotify
-		kate
-		nodejs_21
-		python3
-		unzip
+		    obsidian
+		    discord
+		    alacritty
+		    neofetch
+		    rclone
+		    openrazer-daemon
+		    polychromatic
+		    spotify
+		    kate
   	])
 
 	++
 
+  # List unstable packages installed in system profile
 	(with pkgs-unstable; [
 		warp-terminal
 	]);
 
+  # List installed fonts
   fonts.packages = with pkgs; [
   	(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
-  systemd.services.rclone-gdrive = {
-    description = "rclone: Mount Google Drive to /home/tosa/gdrive";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      User = "tosa";
-      Group = "users";
-      # Ensure the directory exists before trying to mount
-      ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p /home/tosa/gdrive";
-      # Use the full path for fusermount3
-      Environment = "PATH=/run/wrappers/bin:/bin:/usr/bin:${pkgs.coreutils}/bin:${pkgs.fuse}/bin";
-      ExecStart = "${pkgs.rclone}/bin/rclone mount gdrive: /home/tosa/gdrive --config /home/tosa/.config/rclone/rclone.conf --vfs-cache-mode writes --vfs-cache-max-size 100M --log-level INFO --log-file /tmp/rclone-gdrive.log --umask 022 --allow-other";
-      # Use the full path for fusermount3
-      ExecStop = "/run/wrappers/bin/fusermount3 -u /home/tosa/gdrive";
-    };
-
-    wantedBy = [ "multi-user.target" ];
-  };
-
-  environment.etc."fuse.conf".text = ''
-    user_allow_other
-  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

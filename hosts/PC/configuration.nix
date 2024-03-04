@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./rclone-gdrive.nix
+      ../../modules/rclone-gdrive.nix
     ];
 
   # Bootloader.
@@ -64,8 +64,8 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;  
   services.xserver.displayManager = {
+    sddm.enable = true;
     autoLogin = {
       enable = true;
       user = "tosa";

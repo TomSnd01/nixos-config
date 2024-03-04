@@ -1,5 +1,6 @@
 # Daemon service to mount google drive on startup
-{ pkgs }:
+{ pkgs, pkgs-unstable, ... }:
+
 {
   systemd.services.rclone-gdrive = {
     description = "rclone: Mount Google Drive to /home/tosa/gdrive";

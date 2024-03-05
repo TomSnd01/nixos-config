@@ -61,23 +61,23 @@
   # Enable Openrazer
   # hardware.openrazer.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager = {
-    sddm.enable = true;
-    autoLogin = {
-      enable = true;
-      user = "tosa";
-    };
-  };
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    # Make Xserver use amdgpu driver
+    videoDrivers = [ "amdgpu" ];
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
+  # Enable the KDE Plasma Desktop Environment.
+    displayManager = {
+      sddm.enable = true;
+      autoLogin = {
+        enable = true;
+        user = "tosa";
+      };
+    };
+    desktopManager.plasma5.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -107,7 +107,7 @@
   users.users.tosa = {
     isNormalUser = true;
     description = "Tom Sander";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" "openrazer"];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
     packages = with pkgs; [
     ];
   };

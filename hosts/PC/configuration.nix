@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/rclone-gdrive.nix
+      ../../modules/rgboff.nix
     ];
 
   # Bootloader.
@@ -58,7 +59,7 @@
   };
 
   # Enable Openrazer
-  hardware.openrazer.enable = true;
+  # hardware.openrazer.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -133,8 +134,6 @@
 		    alacritty
 		    neofetch
 		    rclone
-		    openrazer-daemon
-		    polychromatic
 		    spotify
 		    kate
   	])

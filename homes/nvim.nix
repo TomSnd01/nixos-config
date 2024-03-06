@@ -3,8 +3,8 @@
 {
   programs.neovim = {
     enable = true;
-    plugins = with (pkgs.vimPlugins; [
+    plugins = with pkgs.vimPlugins; [
       nvchad
-    ]);
+    ];
   };
-};
+}

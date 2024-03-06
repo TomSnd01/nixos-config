@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
   imports =
@@ -112,6 +112,13 @@
     ];
   };
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "tosa" = import ./home.nix;
+      };
+    };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -126,7 +133,6 @@
   	(with pkgs; [
         wget
     		vim
-    		neovim
     		git
     		google-chrome
 		    obsidian

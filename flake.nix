@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    #home-manager.url = "github:nix-community/home-manager";
-    #home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { 
@@ -23,17 +23,13 @@
     {
       nixosConfigurations = {
         PC = nixpkgs.lib.nixosSystem {
-          specialArgs = { 
-            inherit pkgs-unstable;
-          };
+          specialArgs = { inherit inputs outputs; };
           modules = [ 
             ./hosts/PC/configuration.nix
           ];
         };
         Laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit pkgs-unstable;
-          };
+          specialArgs = { inherit inputs outputs; };
           modules = [ 
             ./hosts/Laptop/configuration.nix
           ];

@@ -4,34 +4,31 @@
 
 { config, pkgs, pkgs-unstable, ... }:
 
+
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/rclone-gdrive.nix
-      ../../modules/rgboff.nix
     ];
 
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.loader = {
-  	grub = {
-		enable = true;
-		device = "nodev";
-		efiSupport = true;
-		useOSProber = true;
-	};
-	  efi = {
-		  canTouchEfiVariables = true;
-	  };
-  };
+  boot.loader.grub = {
+  	enable = true;
+  	device = "nodev"; 
+  	efiSupport = true;
+	efiInstallAsRemovable = true;
+	useOSProber = true;
+};
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -47,37 +44,35 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
+    LC_ADDRESS = "de_DE.UTF-8";
+    LC_IDENTIFICATION = "de_DE.UTF-8";
+    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_MONETARY = "de_DE.UTF-8";
+    LC_NAME = "de_DE.UTF-8";
+    LC_NUMERIC = "de_DE.UTF-8";
+    LC_PAPER = "de_DE.UTF-8";
+    LC_TELEPHONE = "de_DE.UTF-8";
+    LC_TIME = "de_DE.UTF-8";
   };
 
-  # Enable Openrazer
-  # hardware.openrazer.enable = true;
+  # Enable the X11 windowing system.
+  #services.xserver.enable = true;
+
+  # Enable the KDE Plasma Desktop Environment.
+  #services.xserver.displayManager.sddm.enable = true;
+  #services.xserver.desktopManager.plasma5.enable = true;
 
   services.xserver = {
-    # Enable the X11 windowing system.
-    enable = true;
-    # Make Xserver use amdgpu driver
-    videoDrivers = [ "amdgpu" ];
-    # Configure keymap in X11
+  	enable = true;
+  	displayManager.sddm.enable = true; 
+  	desktopManager.plasma5.enable = true;
+};
+
+
+  # Configure keymap in X11
+  services.xserver = {
     layout = "us";
     xkbVariant = "";
-  # Enable the KDE Plasma Desktop Environment.
-    displayManager = {
-      sddm.enable = true;
-      autoLogin = {
-        enable = true;
-        user = "tosa";
-      };
-    };
-    desktopManager.plasma5.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -107,49 +102,48 @@
   users.users.tosa = {
     isNormalUser = true;
     description = "Tom Sander";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      firefox
+      kate
+    #  thunderbird
     ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List allowed insecure packages
   nixpkgs.config.permittedInsecurePackages = [
-  	"electron-25.9.0"
+    "electron-25.9.0"
   ];
 
-  # List stable packages installed in system profile. To search, run:
+  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = 
-  	(with pkgs; [
-        wget
-    		vim
-    		neovim
-    		git
-    		google-chrome
-		    obsidian
-		    discord
-		    alacritty
-		    neofetch
-		    rclone
-		    spotify
-		    kate
-  	])
+     (with pkgs; [
+     	vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     	wget
+     	google-chrome
+     	neovim
+     	git
+     	obsidian
+     	discord
+	    alacritty
+      neofetch
+      rclone
+      kate
+     ])
 
-	++
+     ++
 
-  # List unstable packages installed in system profile
-	(with pkgs-unstable; [
-		warp-terminal
-	]);
+     (with pkgs-unstable; [
+     	warp-terminal
+      protonvpn-gui
+     ]);
 
-  # List installed fonts
   fonts.packages = with pkgs; [
   	(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

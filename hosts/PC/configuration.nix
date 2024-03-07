@@ -131,29 +131,28 @@
   # $ nix search wget
   environment.systemPackages = 
   	(with pkgs; [
-        wget
-    		vim
-    		git
-    		google-chrome
-		    obsidian
-		    discord
-		    alacritty
-		    neofetch
-		    rclone
-		    spotify
-		    kate
+          wget
+    	  vim
+    	  google-chrome
+	  obsidian
+	  discord
+	  alacritty
+	  neofetch
+	  rclone
+	  spotify
+	  kate
   	])
 
 	++
 
   # List unstable packages installed in system profile
 	(with pkgs-unstable; [
-		warp-terminal
+	  warp-terminal
 	]);
 
   # List installed fonts
   fonts.packages = with pkgs; [
-  	(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -15,7 +15,8 @@
 
   imports = 
     [
-      ../../homes/nvim.nix
+      ../../homes/neovim.nix
+      ../../homes/git.nix
     ];
 
   # The home.packages option allows you to install Nix packages into your

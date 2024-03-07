@@ -131,24 +131,26 @@
   # $ nix search wget
   environment.systemPackages = 
   	(with pkgs; [
-          wget
-    	  vim
-    	  google-chrome
-	  obsidian
-	  discord
-	  alacritty
-	  neofetch
-	  rclone
-	  spotify
-	  kate
+    	wget
+    	vim
+    	google-chrome
+	  	obsidian
+	  	discord
+	  	alacritty
+	  	neofetch
+	  	rclone
+	  	spotify
+	  	kate
+			jetbrains.rust-rover
+			vscode
   	])
 
 	++
 
   # List unstable packages installed in system profile
-	(with pkgs-unstable; [
-	  warp-terminal
-	]);
+		(with pkgs-unstable; [
+	  	warp-terminal
+		]);
 
   # List installed fonts
   fonts.packages = with pkgs; [

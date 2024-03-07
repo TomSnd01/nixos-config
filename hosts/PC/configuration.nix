@@ -141,8 +141,8 @@
 	  	rclone
 	  	spotify
 	  	kate
-			jetbrains.rust-rover
 			vscode
+			jetbrains.webstorm
   	])
 
 	++
@@ -150,6 +150,7 @@
   # List unstable packages installed in system profile
 		(with pkgs-unstable; [
 	  	warp-terminal
+			jetbrains.rust-rover
 		]);
 
   # List installed fonts

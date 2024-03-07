@@ -33,5 +33,7 @@
         PC = mkSystem [ ./hosts/PC/configuration.nix inputs.home-manager.nixosModules.default ];
         Laptop = mkSystem [ ./hosts/Laptop/configuration.nix inputs.home-manager.nixosModules.default ];
       };
+			
+			devShells.x86_64-linux.default = (import ./modules/shell.nix {inherit pkgs; });
     };
 }

@@ -23,10 +23,9 @@
       vim.o.mouse = 'a'
 			
     '';
+  };
 
-    xdg.configFile."nvim/" = {
-		source = (pkgs.callPackage ./nvchad.nix{}).nvchad;
-	};
-
+  xdg.configFile."nvim/" = {
+    source = (pkgs.callPackage ./nvchad.nix{}).nvchad;
   };
 }

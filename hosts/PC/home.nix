@@ -15,7 +15,7 @@
 
   imports = 
     [
-      ../../homes/neovim.nix
+      ../../homes/neovim/neovim.nix
       ../../homes/git.nix
     ];
 

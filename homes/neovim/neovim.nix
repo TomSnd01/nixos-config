@@ -25,7 +25,7 @@
     '';
 
     xdg.configFile."nvim/" = {
-		source = (pkgs.callPackage ./nvchad/default.nix{}).nvchad;
+		source = (pkgs.callPackage ./nvchad.nix{}).nvchad;
 	};
 
   };

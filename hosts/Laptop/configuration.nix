@@ -106,7 +106,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      kate
     #  thunderbird
     ];
   };
@@ -133,6 +132,10 @@
       neofetch
       rclone
       kate
+      steam-run
+      docker
+      gns3-gui
+      gns3-server
      ])
 
      ++

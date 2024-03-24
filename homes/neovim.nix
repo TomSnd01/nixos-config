@@ -3,6 +3,9 @@
 {
   programs.neovim = {
     enable = true;
+    plugins = with pkgs.vimPlugins; [
+
+    ];
     extraLuaConfig = ''
       vim.g.mapleader = ' '
       vim.g.maplocalleader = ' '

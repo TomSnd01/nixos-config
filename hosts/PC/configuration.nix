@@ -151,6 +151,7 @@
 		(with pkgs-unstable; [
 	  	warp-terminal
 			jetbrains.rust-rover
+			jetbrains.idea-ultimate
 		]);
 
   # List installed fonts

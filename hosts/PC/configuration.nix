@@ -143,6 +143,7 @@
 	  	kate
 			vscode
 			jetbrains.webstorm
+			audacity
   	])
 
 	++

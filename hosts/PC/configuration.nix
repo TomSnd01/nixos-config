@@ -6,15 +6,11 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ../../modules/rclone-gdrive.nix
       ../../modules/rgboff.nix
     ];
-
-  # Bootloader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
 
   boot.loader = {
   	grub = {
@@ -30,8 +26,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "PC"; # Define your hostname.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -88,6 +83,8 @@
 		openFirewall = true;
 	};
 
+	hardware.sane.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -105,17 +102,18 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tosa = {
     isNormalUser = true;
     description = "Tom Sander";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "scanner" "lp" ];
     packages = with pkgs; [
     ];
   };
+
+	environment.sessionVariables = {
+		FLAKE = "/etc/nixos";
+	};
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
@@ -132,12 +130,13 @@
   	"electron-25.9.0"
   ];
 
+	programs.steam.enable = true;
+
   # List stable packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = 
   	(with pkgs; [
-    	wget
     	vim
+    	wget
     	google-chrome
 	  	obsidian
 	  	discord
@@ -158,6 +157,7 @@
 
   # List unstable packages installed in system profile
 		(with pkgs-unstable; [
+			nh
 	  	warp-terminal
 			jetbrains.rust-rover
 			jetbrains.idea-ultimate

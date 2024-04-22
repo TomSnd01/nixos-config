@@ -140,7 +140,6 @@
      	git
      	obsidian
      	discord
-	    alacritty
       neofetch
       rclone
       kate

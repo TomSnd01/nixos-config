@@ -140,7 +140,6 @@
     	google-chrome
 	  	obsidian
 	  	discord
-	  	alacritty
 	  	neofetch
 	  	rclone
 	  	spotify

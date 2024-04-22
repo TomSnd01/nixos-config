@@ -110,11 +110,15 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = { inherit inputs outputs pkgs-unstable; };
     users = {
       "tosa" = import ./home.nix;
     };
   };
+
+  environment.sessionVariables = {
+		FLAKE = "/etc/nixos";
+	};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -150,6 +154,7 @@
      ++
 
      (with pkgs-unstable; [
+      nh
      	warp-terminal
       protonvpn-gui
      ]);

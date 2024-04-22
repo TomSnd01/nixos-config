@@ -23,10 +23,10 @@
       home-manager = import home-manager;
 
       mkSystem = modules:
-        nixpkgs.lib.nixosSystem {
-	  inherit modules;
-          specialArgs = { inherit inputs outputs pkgs-unstable; };
-        };
+      nixpkgs.lib.nixosSystem {
+	      inherit modules;
+        specialArgs = { inherit inputs outputs pkgs-unstable; };
+      };
     in 
     {
       nixosConfigurations = {

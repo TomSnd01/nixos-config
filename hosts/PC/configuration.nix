@@ -118,6 +118,10 @@
     };
   };
 
+  environment.sessionVariables = {
+		FLAKE = "/etc/nixos";
+	};
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

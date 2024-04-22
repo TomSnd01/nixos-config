@@ -19,7 +19,6 @@
     [
       ../../homes/neovim.nix
       ../../homes/git.nix
-      ../../homes/nh.nix
     ];
 
   # The home.packages option allows you to install Nix packages into your

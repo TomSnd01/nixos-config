@@ -111,10 +111,6 @@
     ];
   };
 
-	environment.sessionVariables = {
-		FLAKE = "/etc/nixos";
-	};
-
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users = {
@@ -157,7 +153,6 @@
 
   # List unstable packages installed in system profile
 		(with pkgs-unstable; [
-			nh
 	  	warp-terminal
 			jetbrains.rust-rover
 			jetbrains.idea-ultimate

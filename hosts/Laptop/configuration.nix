@@ -2,8 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, ... }:
-
+{ config, inputs, outputs, pkgs, pkgs-unstable, home-manager, ... }:
 
 {
   imports =
@@ -25,7 +24,7 @@
 };
 
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "Laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -110,12 +109,21 @@
     ];
   };
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      "tosa" = import ./home.nix;
+    };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+
+  programs.steam.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -136,6 +144,7 @@
       docker
       gns3-gui
       gns3-server
+      inetutils
      ])
 
      ++

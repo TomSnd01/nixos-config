@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 swww init &
-swww img ~/Wallpapers/moon.jpg &
+
+sleep 1 &&
+
+swww img ~/background-image.jpg &
 
 nm-applet --indicator &
 waybar &

@@ -42,6 +42,15 @@
     # '')
   ];
 
+	wayland.windowManager.hyprland.settings = {
+		monitor = 
+			[
+				"DP-2, 1920x1080, 0x0, 1"
+				"DP-1, 2560x1440, 1920x0, 1"
+				"HDMI-A-1, 1080x1920, 4480x0, 1, transform, 1"
+			];
+	};
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

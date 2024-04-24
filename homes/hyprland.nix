@@ -7,5 +7,8 @@
     libnotify
     swww
     networkmanagerapplet
+		grim
+		slurp
+		wl-clipboard
   ];
 }

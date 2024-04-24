@@ -9,6 +9,7 @@
     [
       ./hardware-configuration.nix
 			../../homes/hyprland.nix
+			../../homes/waybar.nix
       ../../modules/rclone-gdrive.nix
       ../../modules/rgboff.nix
     ];

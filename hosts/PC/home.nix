@@ -47,8 +47,8 @@
   home.file = {
 		".bashrc".source = ../../homes/ohmyposh/.bashrc;
 		".poshThemes".source = ../../homes/ohmyposh;
-		".config/hypr".source = ../../modules/PC;
-		"~/.config/waybar/config".source = ../../modules/PC/waybar;
+		".config/hypr".source = ../../modules/hyprland/PC;
+		".config/waybar".source = ../../modules/hyprland/PC/waybar;
   };
 
   # Home Manager can also manage your environment variables through

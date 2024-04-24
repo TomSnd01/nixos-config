@@ -65,8 +65,8 @@
 		xkbVariant = "";
   	displayManager.sddm.enable = true; 
 		desktopManager = {
-			plasma5.enable = true;
 			wallpaper.mode = "center";
+			plasma5.enable = true;
 		};
 	};
 

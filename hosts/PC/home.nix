@@ -19,7 +19,6 @@
       ../../homes/git.nix
 			../../homes/alacritty.nix
 			../../homes/ohmyposh/ohmyposh.nix
-			../../homes/waybar.nix
     ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -43,21 +42,13 @@
     # '')
   ];
 
-	wayland.windowManager.hyprland.settings = {
-		monitor = 
-			[
-				"DP-2, 1920x1080, 0x0, 1"
-				"DP-1, 2560x1440, 1920x0, 1"
-				"HDMI-A-1, 1080x1920, 4480x0, 1, transform, 1"
-			];
-	};
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
 		".bashrc".source = ../../homes/ohmyposh/.bashrc;
 		".poshThemes".source = ../../homes/ohmyposh;
-		".config/hypr".source = ../../modules/hyprland;
+		".config/hypr".source = ../../modules/PC;
+		"~/.config/waybar/config".source = ../../modules/PC/waybar;
   };
 
   # Home Manager can also manage your environment variables through

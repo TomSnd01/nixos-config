@@ -13,7 +13,7 @@
       }
 
       * {
-        ${if config.hostId == "yoga" then ''
+        ${if builtins.getEnv "HOSTNAME" == "Laptop" then ''
         font-size: 18px;
       '' else ''
 
@@ -33,7 +33,7 @@
         "cpu"
         "memory"
         "temperature"
-      ] ++ (if config.hostId == "yoga" then [ "battery" ] else [ ])
+      ] ++ (if builtins.getEnv "HOSTNAME" == "Laptop" then [ "battery" ] else [ ])
       ++ [
         "clock"
         "tray"

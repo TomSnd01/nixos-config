@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+			../../homes/hyprland.nix
       ../../modules/rclone-gdrive.nix
       ../../modules/rgboff.nix
     ];
@@ -72,8 +73,21 @@
         user = "tosa";
       };
     };
-    desktopManager.plasma5.enable = true;
+    desktopManager.plasma5.enable = false;
   };
+
+	services.gnome.gnome-keyring.enable = true;
+	security.pam.services.sddm.enableGnomeKeyring = true;
+
+	programs.hyprland = {
+		enable = true;
+		xwayland.enable = true;
+	};
+
+	xdg.portal = {
+		enable = true;
+		extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	};
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -156,6 +170,7 @@
 
   # List unstable packages installed in system profile
 		(with pkgs-unstable; [
+			nh
 	  	warp-terminal
 			jetbrains.rust-rover
 			jetbrains.idea-ultimate

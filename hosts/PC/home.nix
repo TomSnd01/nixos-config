@@ -47,6 +47,7 @@
   home.file = {
 		".bashrc".source = ../../homes/ohmyposh/.bashrc;
 		".poshThemes".source = ../../homes/ohmyposh;
+		".config/hypr".source = ../../modules/hyprland;
   };
 
   # Home Manager can also manage your environment variables through

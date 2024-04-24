@@ -21,6 +21,7 @@
       ../../homes/git.nix
 			../../homes/alacritty.nix
 			../../homes/ohmyposh/ohmyposh.nix
+			../../modules/hyprland/packages.nix
     ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -49,6 +50,7 @@
   home.file = {
 		".bashrc".source = ../../homes/ohmyposh/.bashrc;
 		".poshThemes".source = ../../homes/ohmyposh;
+		".config/hypr".source = ../../modules/hyprland;
   };
 
   # Home Manager can also manage your environment variables through

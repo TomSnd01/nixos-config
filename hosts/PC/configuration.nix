@@ -67,7 +67,11 @@
     xkbVariant = "";
   # Enable the KDE Plasma Desktop Environment.
     displayManager = {
-      sddm.enable = true;
+      sddm = {
+				enable = true;
+				wayland.enable = true;
+				theme = "${import ../../homes/sddm-theme.nix {inherit pkgs; }}";
+			};
       autoLogin = {
         enable = true;
         user = "tosa";
@@ -164,6 +168,7 @@
 			gimp
 			vlc
 			inetutils
+			sddm-chili-theme
   	])
 
 	++

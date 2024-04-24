@@ -1,7 +1,12 @@
 { pkgs }:
 
 let
-  image = "./main-background-image.jpg";
+	imgLink = "https://raw.githubusercontent.com/TomSnd01/nixos-config/main/homes/sddm/main-background-image.jpg";
+
+  image = pkgs.fetchurl {
+    url = imgLink;
+		sha256 = "sha256-/Hn0N3Vkwg275RSaKqqCB4tHRwZX1+8xAtGaooFpN5s=";
+  };
 in
 pkgs.stdenv.mkDerivation {
   name = "sddm-theme";

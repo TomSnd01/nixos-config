@@ -70,7 +70,7 @@
       sddm = {
 				enable = true;
 				wayland.enable = true;
-				theme = "${import ../../homes/sddm-theme.nix {inherit pkgs; }}";
+				theme = "${import ../../homes/sddm/sddm-theme.nix {inherit pkgs; }}";
 			};
       autoLogin = {
         enable = true;

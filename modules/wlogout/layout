@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "swaylock --clock",
+    "action" : "swaylock --clock --indicator",
     "text" : "Lock",
     "keybind" : "l"
 }

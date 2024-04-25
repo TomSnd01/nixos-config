@@ -51,6 +51,7 @@
 		".config/waybar".source = ../../modules/waybar/PC;
 		".config/swaylock".source = ../../modules/swaylock;
 		".config/wlogout".source = ../../modules/wlogout;
+		".config/rofi".source = ../../modules/rofi;
   };
 
   # Home Manager can also manage your environment variables through

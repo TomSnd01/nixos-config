@@ -1,15 +1,15 @@
 {
     "modules-left": [],
     "modules-center": ["clock"],
-    /* "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"], */
-    "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"],
+    /* "modules-right": ["tray", "network", "pulseaudio", "custom/power"], */
+    "modules-right": ["tray", "network", "pulseaudio", "custom/power"],
 
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname} ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
         "format-disconnected": "", 
         "max-length": 50,
-        "on-click": "kitty -e 'nmtui'"
+        "on-click": "alacritty",
     },
     "tray": {
         "icon-size": 15,
@@ -35,20 +35,11 @@
             "portable": "",
             "car": "",
             "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+      },
+      "on-click": "pavucontrol"
     },
-	"custom/power": {
-		"format": " ",
-		"on-click": "wlogout"
-	},
-    "custom/scratchpad-indicator": {
-        "format-text": "{}hi",
-        "return-type": "json",
-        "interval": 3,
-        "exec": "~/.local/bin/scratchpad-indicator 2> /dev/null",
-        "exec-if": "exit 0",
-        "on-click": "swaymsg 'scratchpad show'",
-        "on-click-right": "swaymsg 'move scratchpad'"
-    }
+		"custom/power": {
+			"format": " ",
+			"on-click": "wlogout"
+		},
 }

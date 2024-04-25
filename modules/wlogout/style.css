@@ -24,3 +24,27 @@ button:focus, button:active, button:hover {
 	background-color: #3700B3;
 	outline-style: none;
 }
+
+#lock {
+    background-image: image(url("./lock.png"), url("./lock.png"));
+}
+
+#logout {
+    background-image: image(url("./logout.png"), url("./logout.png"));
+}
+
+#suspend {
+    background-image: image(url("./suspend.png"), url("./suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("./hibernate.png"), url("./hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("./shutdown.png"), url("./shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("./reboot.png"), url("./reboot.png"));
+}

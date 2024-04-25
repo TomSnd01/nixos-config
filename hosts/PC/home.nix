@@ -50,6 +50,7 @@
 		".config/hypr".source = ../../modules/hyprland/PC;
 		".config/waybar".source = ../../modules/waybar/PC;
 		".config/swaylock".source = ../../modules/swaylock;
+		".config/wlogout".source = ../../modules/wlogout;
   };
 
   # Home Manager can also manage your environment variables through

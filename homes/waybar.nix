@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
 		sway
-		swaylock
+		swaylock-effects
 		pavucontrol
 		wlogout
   ];

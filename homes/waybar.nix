@@ -1,7 +1,15 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-		pavucontrol
 		sway
+		swaylock
+		pavucontrol
+		wlogout
   ];
+
+	security.pam.services.swaylock = {
+		text = ''
+			auth include login
+		'';
+	};
 }

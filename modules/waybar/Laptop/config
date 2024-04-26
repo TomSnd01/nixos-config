@@ -1,0 +1,58 @@
+{
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "network", "pulseaudio", "custom/power"],
+
+		"hyprland/workspaces": {
+    	"on-click": "activate",
+    	"active-only": false,
+    	"all-outputs": true,
+    	"format": "{}",
+    	"format-icons": {
+      	"urgent": "",
+      	"active": "",
+      	"default": ""
+    	},
+    	"persistent-workspaces": {
+      	"*": 5
+    	}
+  	},
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "", 
+        "max-length": 50,
+        "on-click": "alacritty",
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "clock": {
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%Y-%m-%d}"
+		"on-click": "gnome-calendar"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon} ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "0% {icon} ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
+    },
+		"custom/power": {
+			"format": " ",
+			"on-click": "wlogout"
+		},
+}

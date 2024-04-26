@@ -165,6 +165,7 @@
       inetutils
 			jetbrains.webstorm
 			wireshark
+			brightnessctl
      ])
 
      ++

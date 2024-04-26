@@ -73,8 +73,8 @@
 				enable = true;
 				wayland.enable = true;
 				theme = "${import ../../homes/sddm/sddm-theme.nix {inherit pkgs; }}";
-			}
-		}
+			};
+		};
 	};
 
 	services.gnome.gnome-keyring.enable = true;

@@ -169,7 +169,6 @@
 			gimp
 			vlc
 			inetutils
-			sddm-chili-theme
   	])
 
 	++

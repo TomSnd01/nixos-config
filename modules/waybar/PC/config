@@ -1,7 +1,6 @@
 {
-    "modules-left": [],
+    "modules-left": ["custom/media"],
     "modules-center": ["clock"],
-    /* "modules-right": ["tray", "network", "pulseaudio", "custom/power"], */
     "modules-right": ["tray", "network", "pulseaudio", "custom/power"],
 
     "network": {
@@ -42,4 +41,16 @@
 			"format": " ",
 			"on-click": "wlogout"
 		},
+		"custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 25,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "./mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
+    },
 }

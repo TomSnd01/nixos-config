@@ -5,6 +5,7 @@
 		swaylock-effects
 		pavucontrol
 		wlogout
+		playerctl
   ];
 
 	security.pam.services.swaylock = {

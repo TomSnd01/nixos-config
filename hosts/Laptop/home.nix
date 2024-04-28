@@ -44,19 +44,16 @@
     # '')
   ];
 
-	wayland.windowManager.hyprland.settings = {
-		monitor = 
-			[
-				", 1920x1080, 0x0, 1"
-			];
-	};
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
 		".bashrc".source = ../../homes/ohmyposh/.bashrc;
 		".poshThemes".source = ../../homes/ohmyposh;
-		".config/hypr".source = ../../modules/hyprland;
+		".config/hypr".source = ../../modules/hyprland/Laptop;
+		".config/waybar".source = ../../modules/waybar/Laptop;
+		".config/swaylock".source = ../../modules/swaylock;
+		".config/wlogout".source = ../../modules/wlogout;
+		".config/rofi".source = ../../modules/rofi;
   };
 
   # Home Manager can also manage your environment variables through

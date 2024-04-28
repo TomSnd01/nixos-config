@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 			../../homes/hyprland.nix
+			../../homes/waybar.nix
       ../../modules/rclone-gdrive.nix
     ];
 
@@ -63,10 +64,16 @@
   	enable = true;
 		layout = "us";
 		xkbVariant = "";
-  	displayManager.sddm.enable = true; 
 		desktopManager = {
 			wallpaper.mode = "center";
 			# plasma5.enable = true;
+		};
+  	displayManager = {
+			sddm = {
+				enable = true;
+				wayland.enable = true;
+				theme = "${import ../../homes/sddm/sddm-theme.nix {inherit pkgs; }}";
+			};
 		};
 	};
 
@@ -158,6 +165,7 @@
       inetutils
 			jetbrains.webstorm
 			wireshark
+			brightnessctl
      ])
 
      ++

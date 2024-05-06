@@ -2,7 +2,7 @@
 		"height": 20,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "network", "pulseaudio", "custom/power"],
+    "modules-right": ["tray", "network", "pulseaudio", "battery", "custom/power"],
 
 		"hyprland/workspaces": {
     	"on-click": "activate",
@@ -52,6 +52,17 @@
       },
       "on-click": "pavucontrol"
     },
+		 "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
 		"custom/power": {
 			"format": " ",
 			"on-click": "wlogout"

@@ -23,8 +23,7 @@
   	efiSupport = true;
 	efiInstallAsRemovable = true;
 	useOSProber = true;
-};
-
+	};
 
   networking.hostName = "Laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -57,10 +56,36 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+	hardware.opengl = {
+		enable = true;
+		driSupport = true;
+		driSupport32Bit = true;
+	};
+
+	hardware.nvidia = {
+		modesetting.enable = true;
+		powerManagement = {
+			enable = false;
+			finegrained = false;
+		};
+		open = false;
+		nvidiaSettings = true;
+		prime = {
+			sync.enable = true;
+			intelBusId = "PCI:0:2:0";
+			nvidiaBusId = "PCI:1:0:0";
+		};
+		#package = config.boot.kernelPackages.nvidiaPackages.stable;
+	};
+
+	boot.initrd.kernelModules = [ "nvidia" ];
+	boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+
   # Enable the X11 windowing system.
   # Enable the KDE Plasma Desktop Environment.
   # Configure keymap in X11
   services.xserver = {
+		videoDrivers = ["nvidia"];
   	enable = true;
 		layout = "us";
 		xkbVariant = "";
@@ -82,6 +107,7 @@
 
 	programs.hyprland = {
 		enable = true;
+		nvidiaPatches = true;
 		xwayland.enable = true;
 	};
 
@@ -165,6 +191,9 @@
 			jetbrains.webstorm
 			wireshark
 			brightnessctl
+			mangohud
+			lutris
+			wineWowPackages.stable
      ])
 
      ++

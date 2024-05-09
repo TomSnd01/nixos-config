@@ -58,6 +58,14 @@
   # Enable Openrazer
   # hardware.openrazer.enable = true;
 
+	boot.initrd.kernelModules = [ "amdgpu"];
+
+	hardware.opengl = {
+		enable = true;
+		driSupport = true;
+		driSupport32Bit = true;
+	};
+
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;

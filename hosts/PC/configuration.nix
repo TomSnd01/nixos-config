@@ -177,6 +177,10 @@
 			gimp
 			vlc
 			inetutils
+			lutris
+			mangohud
+			wineWowPackages.waylandFull
+			webcord
   	])
 
 	++

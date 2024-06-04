@@ -63,7 +63,7 @@
 	};
 
 	hardware.nvidia = {
-		modesetting.enable = true;
+		modesetting.enable = false;
 		powerManagement = {
 			enable = false;
 			finegrained = false;
@@ -71,7 +71,7 @@
 		open = false;
 		nvidiaSettings = true;
 		prime = {
-			sync.enable = true;
+			sync.enable = false;
 			intelBusId = "PCI:0:2:0";
 			nvidiaBusId = "PCI:1:0:0";
 		};
@@ -194,6 +194,7 @@
 			mangohud
 			lutris
 			wineWowPackages.stable
+			libreoffice
      ])
 
      ++

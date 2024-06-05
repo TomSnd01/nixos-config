@@ -54,7 +54,7 @@
 		".config/swaylock".source = ../../modules/swaylock;
 		".config/wlogout".source = ../../modules/wlogout;
 		".config/rofi".source = ../../modules/rofi;
-		".config".source = ../../modules/electron;
+		".config/electron-flags.conf".source = ../../modules/electron/electron-flags.conf;
   };
 
   # Home Manager can also manage your environment variables through

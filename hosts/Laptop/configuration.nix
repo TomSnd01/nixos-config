@@ -195,6 +195,8 @@
 			lutris
 			wineWowPackages.stable
 			libreoffice
+			gh
+			mullvad-vpn
      ])
 
      ++
@@ -202,8 +204,8 @@
      (with pkgs-unstable; [
       nh
      	warp-terminal
-      protonvpn-gui
 			google-chrome
+			protonvpn-cli
      ]);
 
   fonts.packages = with pkgs; [

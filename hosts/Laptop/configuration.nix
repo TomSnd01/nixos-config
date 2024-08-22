@@ -197,6 +197,7 @@
 			libreoffice
 			gh
 			mullvad-vpn
+			vscode
      ])
 
      ++
@@ -205,7 +206,6 @@
       nh
      	warp-terminal
 			google-chrome
-			protonvpn-cli
      ]);
 
   fonts.packages = with pkgs; [

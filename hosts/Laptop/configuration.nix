@@ -198,6 +198,7 @@
 			gh
 			mullvad-vpn
 			vscode
+			scribus
      ])
 
      ++

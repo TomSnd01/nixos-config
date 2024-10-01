@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
 			../../homes/hyprland.nix
 			../../homes/waybar.nix
-      ../../modules/rclone-gdrive.nix
+#      ../../modules/rclone-gdrive.nix
     ];
 
   # Bootloader.
@@ -21,8 +21,8 @@
   	enable = true;
   	device = "nodev"; 
   	efiSupport = true;
-	efiInstallAsRemovable = true;
-	useOSProber = true;
+#	efiInstallAsRemovable = true;
+#	useOSProber = true;
 	};
 
   networking.hostName = "Laptop2"; # Define your hostname.
@@ -196,9 +196,9 @@
 			wineWowPackages.stable
 			libreoffice
 			gh
-			mullvad-vpn
 			vscode
 			scribus
+			drawio
      ])
 
      ++

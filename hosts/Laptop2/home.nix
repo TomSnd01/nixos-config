@@ -50,7 +50,7 @@
 		".bashrc".source = ../../homes/ohmyposh/.bashrc;
 		".poshThemes".source = ../../homes/ohmyposh;
 		".config/hypr".source = ../../modules/hyprland/Laptop;
-		".config/waybar".source = ../../modules/waybar/Laptop;
+		".config/waybar".source = ../../modules/waybar/Laptop2;
 		".config/swaylock".source = ../../modules/swaylock;
 		".config/wlogout".source = ../../modules/wlogout;
 		".config/rofi".source = ../../modules/rofi;

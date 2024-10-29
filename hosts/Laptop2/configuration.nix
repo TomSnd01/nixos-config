@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
 			../../homes/hyprland.nix
 			../../homes/waybar.nix
+			./php-fpm.nix
 #      ../../modules/rclone-gdrive.nix
     ];
 
@@ -170,6 +171,11 @@
 
   programs.steam.enable = true;
 
+services.mysql = {
+  enable = true;
+  package = pkgs.mariadb;
+};
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = 
@@ -199,6 +205,8 @@
 			vscode
 			scribus
 			drawio
+			php83
+			php83Packages.composer
      ])
 
      ++

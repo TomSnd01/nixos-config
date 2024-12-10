@@ -10,7 +10,6 @@
       ./hardware-configuration.nix
 			../../homes/hyprland.nix
 			../../homes/waybar.nix
-			./php-fpm.nix
 #      ../../modules/rclone-gdrive.nix
     ];
 
@@ -18,18 +17,26 @@
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.loader.grub = {
+  boot.loader = {
+		grub = {
   	enable = true;
   	device = "nodev"; 
   	efiSupport = true;
-#	efiInstallAsRemovable = true;
-#	useOSProber = true;
+		efiInstallAsRemovable = true;
+		};
+		efi = {
+		  #canTouchEfiVariables = true;
+	  };
 	};
 
   networking.hostName = "Laptop2"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+		experimental-features = [ "nix-command" "flakes" ];
+		extra-substituters = [ "https://devenv.cachix.org" ];
+		extra-trusted-public-keys = [ "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
+	};
   services.flatpak.enable = true;
 
   # Configure network proxy if necessary
@@ -108,7 +115,7 @@
 
 	programs.hyprland = {
 		enable = true;
-		nvidiaPatches = true;
+		enableNvidiaPatches = true;
 		xwayland.enable = true;
 	};
 
@@ -171,6 +178,11 @@
 
   programs.steam.enable = true;
 
+	programs.direnv = {
+		enable = true;
+		nix-direnv.enable = true;
+	};
+
 services.mysql = {
   enable = true;
   package = pkgs.mariadb;
@@ -205,8 +217,7 @@ services.mysql = {
 			vscode
 			scribus
 			drawio
-			php83
-			php83Packages.composer
+			devenv
      ])
 
      ++
